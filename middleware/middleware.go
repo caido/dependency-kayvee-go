@@ -66,6 +66,10 @@ func (l *logHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		"canary":           l.isCanary,
 	})
 
+	if silent, ok := data["silent"].(bool); ok && silent {
+		return
+	}
+
 	// check if the user has opted in to rolling up middleware logs
 	if globalRollupRouter != nil && globalRollupRouter.ShouldRollup(data) {
 		globalRollupRouter.Process(data)
