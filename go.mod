@@ -1,4 +1,4 @@
-module github.com/Clever/kayvee-go
+module github.com/caido/dependency-kayvee-go/v6
 
 go 1.22.1
 
